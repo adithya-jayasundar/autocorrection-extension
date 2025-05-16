@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "AutoCorrection Extension",
+  "version": "1.0",
+  "description": "Corrects sentences using a backend API",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "host_permissions": [
+    "https://fd44-111-92-46-42.ngrok-free.app/*"
+  ]
+}
