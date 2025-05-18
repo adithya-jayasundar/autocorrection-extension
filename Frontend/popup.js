@@ -1,9 +1,24 @@
 console.log("popup.js loaded!");
 
-document.getElementById("correctBtn").addEventListener("click", () => {
-  const text = document.getElementById("inputText").value;
+// Elements
+const inputText = document.getElementById("inputText");
+const correctBtn = document.getElementById("correctBtn");
+const resultDiv = document.getElementById("result");
+const loader = document.getElementById("loader");
 
-  fetch("https://9102-111-92-46-42.ngrok-free.app/correct", {
+// Event: Correct Sentence
+correctBtn.addEventListener("click", () => {
+  const text = inputText.value.trim();
+  if (!text) {
+    resultDiv.textContent = "⚠️ Please enter a sentence.";
+    return;
+  }
+
+  // Show loader
+  loader.style.display = "block";
+  resultDiv.textContent = "";
+
+  fetch("https://b566-111-92-46-42.ngrok-free.app/correct", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -12,10 +27,32 @@ document.getElementById("correctBtn").addEventListener("click", () => {
   })
     .then(response => response.json())
     .then(data => {
-      document.getElementById("result").textContent = "Corrected: " + data.corrected;
+      loader.style.display = "none";
+      resultDiv.textContent = "✅ Corrected: " + data.corrected;
     })
     .catch(err => {
+      loader.style.display = "none";
       console.error("Fetch error:", err);
-      document.getElementById("result").textContent = "Error: " + err.message;
+      resultDiv.textContent = "❌ Error: " + err.message;
     });
 });
+
+// Function: Copy to Clipboard
+function copyResult() {
+  const text = resultDiv.textContent;
+  if (!text) {
+    alert("There is no corrected sentence to copy.");
+    return;
+  }
+
+  navigator.clipboard.writeText(text.replace("✅ Corrected: ", ""))
+    .then(() => {
+      alert("Corrected text copied to clipboard!");
+    })
+    .catch(err => {
+      console.error("Copy failed:", err);
+    });
+}
+
+// Attach only copyResult globally if needed
+window.copyResult = copyResult;
