@@ -18,7 +18,7 @@ correctBtn.addEventListener("click", () => {
   loader.style.display = "block";
   resultDiv.textContent = "";
 
-  fetch("https://b566-111-92-46-42.ngrok-free.app/correct", {
+  fetch("https://3725-14-139-189-168.ngrok-free.app/correct", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
