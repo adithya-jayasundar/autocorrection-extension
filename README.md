@@ -22,26 +22,5 @@ This project was built as part of my **Natural Language Processing (NLP) course 
 
 ---
 
-## 🏗️ Technical Architecture
-
-### 📦 Dataset Preprocessing
-- Lowercased text
-- Removed special characters and numbers
-- Extracted unigram word counts using `collections.Counter`
-- Created a vocabulary of ~32,000 unique words
-
-### ⚙️ Core Algorithms
-
-#### 🔡 Edit Distance Generator
-Generates all candidate words one edit away from the input:
-
-```python
-def edits1(word):
-    splits = [(word[:i], word[i:]) for i in range(len(word) + 1)]
-    insertion = [L + c + R for L, R in splits for c in letters]
-    deletion = [L + R[1:] for L, R in splits if R]
-    substitution = [L + c + R[1:] for L, R in splits if R for c in letters]
-    transpose = [L + R[1] + R[0] + R[2:] for L, R in splits if len(R) > 1]
-    return set(insertion + deletion + substitution + transpose)
 
 
