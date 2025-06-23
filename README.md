@@ -21,6 +21,9 @@ This project was built as part of my **Natural Language Processing (NLP) course 
   - Provides real-time autocorrection in any input field on websites
 
 ---
+## 📸 Demo Screenshot
+
+![Autocorrection System Demo](images/Autocorrection.jpg)
 
 
 
