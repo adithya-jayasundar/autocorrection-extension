@@ -22,8 +22,4 @@ A Chrome extension I built **from scratch** that provides real-time auto-correct
 
 ---
 
-## 🛠️ Installation
 
-To install this extension manually:
-
-1. Clone the repo:
